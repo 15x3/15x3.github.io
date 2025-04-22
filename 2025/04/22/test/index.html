@@ -6,17 +6,19 @@
   
   <title>测试测试 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="让我们测试更多东西">
+  <meta name="description" content="让我们测试更多东西终于——轮到我来建立博客了，想想还有点小激动 搭建方案参考了主流的Hexo + Github Pages + Obsidian框架，为了确保Obsidian流利插入图片，额外使用了Obsidian + PicList + 腾讯云OBS图床 ，另外为了确保手机端同步，还在安卓平台准备了Obsidian + Git,hello 搭建过程事先准备好了一个Obsidian项目，在项目根目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试测试">
 <meta property="og:url" content="http://example.com/2025/04/22/test/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="让我们测试更多东西">
+<meta property="og:description" content="让我们测试更多东西终于——轮到我来建立博客了，想想还有点小激动 搭建方案参考了主流的Hexo + Github Pages + Obsidian框架，为了确保Obsidian流利插入图片，额外使用了Obsidian + PicList + 腾讯云OBS图床 ，另外为了确保手机端同步，还在安卓平台准备了Obsidian + Git,hello 搭建过程事先准备好了一个Obsidian项目，在项目根目">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://obsidian-figbed-1257930702.cos.ap-guangzhou.myqcloud.com/20250421171115104.png">
 <meta property="article:published_time" content="2025-04-22T14:16:13.533Z">
-<meta property="article:modified_time" content="2025-04-22T14:16:51.241Z">
+<meta property="article:modified_time" content="2025-04-22T14:19:43.386Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://obsidian-figbed-1257930702.cos.ap-guangzhou.myqcloud.com/20250421171115104.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -95,12 +97,59 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>让我们测试更多东西</p>
+        <h4 id="让我们测试更多东西"><a href="#让我们测试更多东西" class="headerlink" title="让我们测试更多东西"></a>让我们测试更多东西</h4><p>终于——轮到我来建立博客了，想想还有点小激动</p>
+<h2 id="搭建方案"><a href="#搭建方案" class="headerlink" title="搭建方案"></a>搭建方案</h2><p>参考了主流的Hexo + Github Pages + Obsidian框架，为了确保Obsidian流利插入图片，额外使用了Obsidian + PicList + 腾讯云OBS图床 ，另外为了确保手机端同步，还在安卓平台准备了Obsidian + Git,hello</p>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><p>事先准备好了一个Obsidian项目，在项目根目录下打开终端</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli <span class="comment"># 全局安装  </span></span><br><span class="line">  </span><br><span class="line">hexo -v <span class="comment"># 查看hexo版本</span></span><br></pre></td></tr></table></figure>
+
+<p>开始创建一个项目</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog  </span><br><span class="line">  </span><br><span class="line"><span class="built_in">cd</span> blog  </span><br><span class="line">  </span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>生成网页文件后本地启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g <span class="comment"># generate 生成界面  </span></span><br><span class="line">hexo s <span class="comment"># server 本地启动网站</span></span><br></pre></td></tr></table></figure>
+
+<p>浏览器访问命令行中提示的网站<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>可以看到在本机的4000端口Hexo已经生成了一个示例网站了。</p>
+<h3 id="配置GitHub-Pages"><a href="#配置GitHub-Pages" class="headerlink" title="配置GitHub Pages"></a>配置GitHub Pages</h3><p>和上来就更换主题不同，我倾向于先跑通架构再开始修缮</p>
+<p>默认你有一个 GitHub 账号，创建一个仓库</p>
+<p>在Github中注册账号，然后创建一个仓库，配置Github Pages：创建仓库的时候，仓库名请务必填 <code>&lt;你的github名&gt;.github.io</code> ，不然的话Github不会将该仓库认作Github Pages。（别取blog.github.io一定要GitHub名）<br>在 <code>&lt;你的github名&gt;.github.io</code> 仓库对应的 GitHub Pages 设置页面 (访问路径为 <code>Settings -&gt; Pages</code> ) 可以找到个人博客的主页访问地址：https:&#x2F;&#x2F;&lt;GitHub 用户名&gt;.github.io。</p>
+<p>回到hexo这边，首先安装 <code>hexo-deployer-git</code> ：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>修改 <code>_config.yml</code> 文件：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span>  </span><br><span class="line"><span class="attr">type:</span> <span class="string">git</span>  </span><br><span class="line"><span class="attr">repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span> <span class="comment"># https://github.com/&lt;GitHub用户名&gt;/&lt;GitHub用户名&gt;.github.io.git  </span></span><br><span class="line"><span class="attr">branch:</span> [<span class="string">branch</span>] <span class="comment"># 可选？一般都是main  </span></span><br><span class="line"><span class="attr">token:</span> [<span class="string">token</span>] <span class="comment"># 可选？</span></span><br></pre></td></tr></table></figure>
+
+<p>配置好了之后可以就可以在终端生成站点文件后推送到这个仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>如果仓库名为<code>&lt;你的github名&gt;.github.io</code>，一旦上传后几分钟内，Github Pages会自动部署，可以去仓库setting里跳转到Pages一栏确认。通常过5分钟就可以使用了</p>
+<p>如果没有部署成功，可参考：<a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/quickstart">Quickstart for GitHub Pages - GitHub Docs</a></p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">所有的主题可以在这里找到</a></p>
+<p>我先使用了主流的Fluid，之后打算自己弄一个自创主题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-theme-fluid</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，打开<code>_config.yml</code>，修改文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">fluid</span> <span class="comment"># landscape</span></span><br></pre></td></tr></table></figure>
+
+<p>当执行完上述操作之后，完成了主题的配置，可以执行下述指令，查看效果</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean <span class="comment"># 清除  </span></span><br><span class="line">hexo g <span class="comment"># 生成  </span></span><br><span class="line">hexo s <span class="comment"># 本地启动</span></span><br></pre></td></tr></table></figure>
+
+<p>确认启动完成后，就可以在终端生成站点文件后再次推送，确认网上是否有改变</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h3><p>关于图片插入上，我用的是 PicList + 腾讯云OBS 图床的方案，实现了截图后一键CtrlV就能完成 “ 上传图床 -&gt; 获取图床链接 -&gt; 改为Obsidian格式并黏贴 ”，大致操作如下：</p>
+<h1 id="一键推送"><a href="#一键推送" class="headerlink" title="一键推送"></a>一键推送</h1><p>在<a target="_blank" rel="noopener" href="https://sagi-rastar.github.io/2023/11/10/%E5%85%B3%E4%BA%8E%E6%88%91%E4%BD%BF%E7%94%A8obsidian%E5%8A%A0hexo%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%BF%87%E7%A8%8B/#3-1-1-3-%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98">关于我使用obsidian加hexo部署个人博客的过程 - SagiRastar’s Blog</a>博客当中，配置完后每次更新需要部署以下工作流</p>
+<p>我非常不喜欢机械重复的工作，最好是能够通过GitHub自动推送</p>
+<p><img src="https://obsidian-figbed-1257930702.cos.ap-guangzhou.myqcloud.com/20250421171115104.png" alt="image.png"></p>
+<h3 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h3><p>draft -&gt; <code>source/_posts</code> -&gt; </p>
+<p>由于我对于博客笔记的侧边栏有点强迫症，所以希望右边的栏里面不要出现所有和hexo结构相关的东西（最好是放到一个文件夹内）</p>
+<p>一开始，我尝试着将所有的东西都在一个文件夹内，结果发现自己调不清楚git和部署，</p>
+<p>后来我尝试了一下从obsidian方面入手，发现了hide flower这个插件</p>
+<p>and it works! 我的博客环境和hexo环境分隔开来了</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/04/22/test/" data-id="cm9sl9k7e0001g8vg5t3kgnqs" data-title="测试测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/04/22/test/" data-id="cm9slgkzc0000ogvgfqy40nmo" data-title="测试测试" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
