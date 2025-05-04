@@ -1,0 +1,25 @@
+i.hn:before {
+    vertical-align: -0.1em !important;
+}
+
+h1.post-title {
+    font-family: 'ChuLyuFontsNew24';
+}
+
+a.article-title {
+    font-family: 'ChuLyuFontsNew24';
+}
+
+h1#site-title {
+    font-family: 'ChuLyuFontsNew24';
+}
+
+span.site-name {
+    font-family: 'ChuLyuFontsNew24';
+}
+
+#nav #blog-info .site-icon {
+    margin-right: 6px;
+    height: 36px;
+    vertical-align: -0.4em;
+}
