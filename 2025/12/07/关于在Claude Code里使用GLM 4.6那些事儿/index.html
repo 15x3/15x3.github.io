@@ -1,0 +1,290 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>关于在Claude Code里使用GLM 4.6那些事儿 | 神金</title><meta name="author" content="15x3"><meta name="copyright" content="15x3"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0f0f0f"><meta name="description" content="听说清华智谱CodeGeex最近发布了GLM 4.6，声称代码能力和Claude Sonnet能打的有来有回 我一直对国产大模型都挺支持的，尤其是那些愿意潜心研究东西，真正在搞突破的公司来说，清华智谱也是我研究生阶段一直在关注的一家公司，故兴高采烈地下载了CodeGeex VSCode插件，用了一段时间 在此期间我使用它帮我做了以下事情：  帮我重新写了一个xml生成器，主要用于我后续的内容批量生">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于在Claude Code里使用GLM 4.6那些事儿">
+<meta property="og:url" content="https://神金.icu/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/index.html">
+<meta property="og:site_name" content="神金">
+<meta property="og:description" content="听说清华智谱CodeGeex最近发布了GLM 4.6，声称代码能力和Claude Sonnet能打的有来有回 我一直对国产大模型都挺支持的，尤其是那些愿意潜心研究东西，真正在搞突破的公司来说，清华智谱也是我研究生阶段一直在关注的一家公司，故兴高采烈地下载了CodeGeex VSCode插件，用了一段时间 在此期间我使用它帮我做了以下事情：  帮我重新写了一个xml生成器，主要用于我后续的内容批量生">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-12-07T00:16:21.000Z">
+<meta property="article:modified_time" content="2025-12-07T20:35:23.000Z">
+<meta property="article:author" content="15x3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "关于在Claude Code里使用GLM 4.6那些事儿",
+  "url": "https://神金.icu/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/",
+  "image": "https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png",
+  "datePublished": "2025-12-07T00:16:21.000Z",
+  "dateModified": "2025-12-07T20:35:23.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "15x3",
+      "url": "https://神金.icu/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/xiangsu_jinbi.svg"><link rel="canonical" href="https://神金.icu/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f0f0f')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.12.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '关于在Claude Code里使用GLM 4.6那些事儿',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://unpkg.com/webfont-clfn-bitmap@1.0.1/fonts.css"><link rel="stylesheet" href="https://unpkg.com/webfont-classic-console-bitmap@1.0.0/font.css"><link rel="stylesheet" href="https://unpkg.com/@hackernoon/pixel-icon-library/fonts/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw hn hn-home-solid"></i><span> 首页啊嗯</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw hn hn-newspaper-solid"></i><span> 巨魔文章</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw hn hn-user-solid"></i><span> 谁是神人</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/xiangsu_jinbi.svg" alt="Logo"><span class="site-name">神金</span></a><a class="nav-page-title" href="/"><span class="site-name">关于在Claude Code里使用GLM 4.6那些事儿</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw hn hn-home-solid"></i><span> 首页啊嗯</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw hn hn-newspaper-solid"></i><span> 巨魔文章</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw hn hn-user-solid"></i><span> 谁是神人</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">关于在Claude Code里使用GLM 4.6那些事儿</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-07T00:16:21.000Z" title="发表于 2025-12-07 08:16:21">2025-12-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-07T20:35:23.000Z" title="更新于 2025-12-08 04:35:23">2025-12-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:730,&quot;messagePrev&quot;:&quot;本文章离上次更新已经过&quot;,&quot;messageNext&quot;:&quot;天，内容可能已过时，请注意识别。&quot;,&quot;postUpdate&quot;:&quot;2025-12-08 04:35:23&quot;}" hidden></div><p>听说清华智谱CodeGeex最近发布了GLM 4.6，声称代码能力和Claude Sonnet能打的有来有回</p>
+<p>我一直对国产大模型都挺支持的，尤其是那些愿意潜心研究东西，真正在搞突破的公司来说，清华智谱也是我研究生阶段一直在关注的一家公司，故兴高采烈地下载了CodeGeex VSCode插件，用了一段时间</p>
+<p>在此期间我使用它帮我做了以下事情：</p>
+<ul>
+<li>帮我重新写了一个xml生成器，主要用于我后续的内容批量生成</li>
+<li>帮我将生成的xml模板提取出指定数据，并生成了csv表格供我后续修改</li>
+<li>最后，又写了一个python脚本，用于将csv表格当中的数据覆写进xml文档的指定位置</li>
+<li>另外生成了一个《太空侵略者》作为测试</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20251208163943786.png" alt="1d40e7f712f71f938bc902ba23d00a77.png"></p>
+<p>我得承认，总体来说，用VScode插件和使用Gemini网页版相比确实舒服，但是用着用着我发现了两个问题：</p>
+<ul>
+<li>第一，它似乎有个内置的Prompt控制，经常会出现聊着聊着开始原地发癫，代码的质量也是随着聊天的深入逐渐出现问题；</li>
+<li>第二，它似乎并不会消耗我的token额度（虽然确实登录的是我的账号），结合第一条来看，这意味着我很有可能是一直在使用免费版的，而且更糟糕的是，我找不到CodeGeex插件里面哪里有允许我开始消耗我的token额度的地方<br>另外，我也很不喜欢一直对着看侧栏看，我一直都不太喜欢侧栏，倒不是说它不实用，只是太多的插件把70%-100%的内容，全都放在30%的屏幕里了，看的我很头疼。</li>
+</ul>
+<p>总之，这些杂七杂八的问题促使我开始进一步寻求更体验更舒服、而且更深度&#x2F;更酷的使用AI的方法。然后好巧不巧阮老师最近发了个博客，<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2025/11/doubao-seed-code.html">手把手教了如何绕过Claude Code的在线登录，并在其中调用其他第三方平台的模型</a>，我就在想着说，要不自个搞个类似的玩意，不用豆包的模型，而是用智谱GLM4.6</p>
+<p>一个下午就搞定了，不得不说换了个终端确实证实了我之前一直再用免费版的猜测：同一个模型，用Claude Code调用生成的代码比用智谱的CodeGeex要好！</p>
+<p>我提了同样的“用HTML和JavaScript为我生成一个《太空侵略者》”要求，在CodeGeex下生成了一开始生成了无法使用的代码，试了好几次总算有了个可以打开即玩的版本，而在Claude Code下，一次一步到位，而且还贴心地加了复古的CSS风格（我并没有这样要求）</p>
+<p>而且Claude Code有俩额外的好处哈：首先，这玩意是控制台运行，我终于可以不用死盯着那个侧边栏了（而且向上展开完全覆盖70%的空间也行）；另外，它在生成的时候是会记录token消耗的，这样我能知道每次自己打东西都得消耗掉多少的token，虽然我已经准备订阅套餐，不需要担心token的问题了（乐）</p>
+<p>唯一的问题是，我把它做完以后，才尴尬地发现其实<a target="_blank" rel="noopener" href="https://docs.bigmodel.cn/cn/guide/develop/claude#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E6%89%8B%E5%8A%A8%E9%85%8D%E7%BD%AE%EF%BC%88%E6%94%AF%E6%8C%81-windows-macos-linux%EF%BC%89">智谱有官方的Claude Code接入教程</a>，我的做法和官方实践有些出入的地方，故把它在这记录下来，供其他感兴趣的爱好者参考：</p>
+<hr>
+<p>API怎么弄就不说了，这个直接去智谱那边注册新用户就行，新用户有3个月200w token使用，一次调用通常需要几千</p>
+<ul>
+<li><p>在自己的C盘文件夹下创建<code>claude-model</code>文件夹<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20251208161143317.png" alt="image.png"></p>
+</li>
+<li><p>在该文件夹下新建两个子目录：<code>.claude-glm</code>和<code>bin</code>，分别用来放配置文件和可执行脚本<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20251208161531971.png" alt="image.png"></p>
+</li>
+<li><p>然后，将bin文件夹加入到环境变量PATH当中，输入</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%USERPROFILE%\claude-model\bin</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20251208161659837.png" alt="image.png"></p>
+<ul>
+<li>在bin文件夹里新建一个.bat文件，命名为claude-glm.bat，在bat里输入如下内容：</li>
+</ul>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:: Wrapper <span class="keyword">for</span> Claude Code CLI using Doubao API <span class="keyword">for</span> Windows (Batch Script)</span><br><span class="line"></span><br><span class="line">:: <span class="number">1</span>. Define the <span class="built_in">path</span> to the Claude CLI executable</span><br><span class="line">:: <span class="variable">%USERPROFILE%</span> is the equivalent of $HOME <span class="keyword">in</span> Linux</span><br><span class="line"><span class="built_in">set</span> CLAUDE_BIN=<span class="variable">%USERPROFILE%</span>\claude-model\node_modules\.bin\claude.<span class="built_in">cmd</span></span><br><span class="line">:: NOTE: Use claude.<span class="built_in">cmd</span> or claude.exe depending on the actual file name</span><br><span class="line"></span><br><span class="line">:: <span class="number">2</span>. Inject API credentials and configuration</span><br><span class="line"><span class="built_in">set</span> ANTHROPIC_AUTH_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"><span class="built_in">set</span> ANTHROPIC_BASE_URL=https://open.bigmodel.cn/api/anthropic</span><br><span class="line"><span class="built_in">set</span> ANTHROPIC_MODEL=glm-<span class="number">4</span>.<span class="number">6</span></span><br><span class="line"><span class="built_in">set</span> API_TIMEOUT_MS=<span class="number">3000000</span></span><br><span class="line"></span><br><span class="line">:: <span class="number">3</span>. Keep a separate config <span class="built_in">dir</span> (optional)</span><br><span class="line"><span class="built_in">set</span> CLAUDE_CONFIG_DIR=<span class="variable">%USERPROFILE%</span>\claude-model\.claude-glm</span><br><span class="line"></span><br><span class="line">:: <span class="number">4</span>. Execute the Claude CLI with all passed arguments</span><br><span class="line">:: %* refers to all command-line arguments passed to the batch script</span><br><span class="line"><span class="keyword">call</span> &quot;<span class="variable">%CLAUDE_BIN%</span>&quot; %*</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">:: The &#x27;<span class="keyword">call</span>&#x27; command is used here because batch scripts don&#x27;t have a direct &#x27;exec&#x27; equivalent</span><br><span class="line">:: that replaces the process, and we want to ensure variables are <span class="built_in">set</span> before execution.</span><br></pre></td></tr></table></figure>
+
+<p>注意上面的<code>ANTHROPIC_AUTH_TOKEN</code>，要写你自己的API</p>
+<blockquote>
+<p>如果你不打算使用glm而是其他第三方模型的话，请注意<code>ANTHROPIC_BASE_URL</code>的对接接口应该是Claude标准，而不是OpenAI的API规范，有些第三方平台会将这两者区别开来。</p>
+</blockquote>
+<p>这样就完成所有步骤了，你就可以开始使用了，可以尝试在PowerShell里直接输入claude-glm启动它</p>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/07/27/%E5%BC%80%E5%8F%91%E5%A4%8D%E7%9B%98%EF%BC%9A%E4%B8%80%E5%91%A8%E4%B8%A4%E4%B8%AAMod%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85%E5%81%9A%E5%AF%B9%E4%BA%86%EF%BC%8C%E5%93%AA%E4%BA%9B%E5%81%9A%E9%94%99%E4%BA%86/" title="开发复盘：一周两个Mod，哪些事情做对了，哪些做错了"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">开发复盘：一周两个Mod，哪些事情做对了，哪些做错了</div></div><div class="info-2"><div class="info-item-1"> 一周7天完成2个Mod，霸占创意工坊首页整周。作为第一次制作完整游戏系统的尝试，这篇文章描述了我个人在开发结束之后的复盘与反思  上周，我给游戏《潜渊症》（Barotrauma）做的Mod“原版枪械改装”和“武器XML快速生成器”完成了，登顶首页长达一周。  这个mod说大不大说小不小：相当于给这游戏远程武器提供了一套完整的配件改装系统模板——你知道的，就是多数FPS做过的装个镜子、换个枪托这样的玩意，并且还把性能优化到了当前我力作能及的最大极限。我不好说它是不是还能再优化，但是整个游戏因为一把枪装了消音器就从60帧掉到30帧这种事情应该是不会出现了（点名这个游戏的另一个Mod：Combat...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">15x3</div><div class="author-info-description">由杏仁核漏电的类人大脑驱动</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/15x3"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="hn hn-tech-stories"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" title="关于在Claude Code里使用GLM 4.6那些事儿">关于在Claude Code里使用GLM 4.6那些事儿</a><time datetime="2025-12-07T00:16:21.000Z" title="发表于 2025-12-07 08:16:21">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/27/%E5%BC%80%E5%8F%91%E5%A4%8D%E7%9B%98%EF%BC%9A%E4%B8%80%E5%91%A8%E4%B8%A4%E4%B8%AAMod%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85%E5%81%9A%E5%AF%B9%E4%BA%86%EF%BC%8C%E5%93%AA%E4%BA%9B%E5%81%9A%E9%94%99%E4%BA%86/" title="开发复盘：一周两个Mod，哪些事情做对了，哪些做错了">开发复盘：一周两个Mod，哪些事情做对了，哪些做错了</a><time datetime="2025-07-26T20:37:10.000Z" title="发表于 2025-07-27 04:37:10">2025-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/01/%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8E%20Obsidian%20+%20Hexo%20+%20Github%20%E7%9A%84%E9%9B%B6%E5%B9%B2%E6%89%B0%E5%86%99%E4%BD%9C%E7%8E%AF%E5%A2%83/" title="构建基于 Obsidian + Hexo + Github 的零干扰写作环境">构建基于 Obsidian + Hexo + Github 的零干扰写作环境</a><time datetime="2025-05-01T03:59:59.000Z" title="发表于 2025-05-01 11:59:59">2025-05-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 15x3</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5 </a><a href="https://icp.gov.moe/?keyword=20251550" target="_blank">萌ICP备20251550号</a></div><div class="footer_custom_text">Powered by Github Pages & Tencent Cloud</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="hn hn-newspaper-solid"> </i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="hn hn-moon-solid"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="hn hn-bullet-list-solid"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="hn hn-cog-solid"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="hn hn-arrow-up-solid"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="1843870503" data-server="netease" data-type="song" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/fireworks.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
