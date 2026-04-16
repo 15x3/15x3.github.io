@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>前言 | 神金</title><meta name="author" content="15x3"><meta name="copyright" content="15x3"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0f0f0f"><meta name="description" content="前言3月末，我去了一趟上海，参加TapTap组织的“聚光灯”24H线下Jam活动，来回花了我1千多。我之所以大费周章地跑到上海也算是追随自己的初心：想做游戏已经快7年了，17年开始我就有过这种摇摆的想法，到了19年做完核聚变的志愿者最终确认了下来，再到21年参加了人生第一次GameJam，路不平坦，但是走的挺有滋有味，唯一遗憾的终究不是游戏开发相关专业，7年来只想办法挤出了参与寥寥几场Jam的时间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前言">
+<meta property="og:url" content="https://神金.icu/2026/04/06/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E9%AB%98%E5%BA%A6%E9%9B%86%E6%88%90%E7%9A%84Godot%20AI%E6%99%BA%E8%83%BD%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="神金">
+<meta property="og:description" content="前言3月末，我去了一趟上海，参加TapTap组织的“聚光灯”24H线下Jam活动，来回花了我1千多。我之所以大费周章地跑到上海也算是追随自己的初心：想做游戏已经快7年了，17年开始我就有过这种摇摆的想法，到了19年做完核聚变的志愿者最终确认了下来，再到21年参加了人生第一次GameJam，路不平坦，但是走的挺有滋有味，唯一遗憾的终究不是游戏开发相关专业，7年来只想办法挤出了参与寥寥几场Jam的时间">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2026-04-05T17:36:40.000Z">
+<meta property="article:modified_time" content="2026-04-15T19:35:35.000Z">
+<meta property="article:author" content="15x3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "前言",
+  "url": "https://神金.icu/2026/04/06/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E9%AB%98%E5%BA%A6%E9%9B%86%E6%88%90%E7%9A%84Godot%20AI%E6%99%BA%E8%83%BD%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/",
+  "image": "https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png",
+  "datePublished": "2026-04-05T17:36:40.000Z",
+  "dateModified": "2026-04-15T19:35:35.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "15x3",
+      "url": "https://神金.icu/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/xiangsu_jinbi.svg"><link rel="canonical" href="https://神金.icu/2026/04/06/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E9%AB%98%E5%BA%A6%E9%9B%86%E6%88%90%E7%9A%84Godot%20AI%E6%99%BA%E8%83%BD%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/index.html"><link rel="preconnect" href="//cdnjs.cloudflare.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f0f0f')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdnjs.cloudflare.com/ajax/libs/egjs-infinitegrid/4.12.0/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前言',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://unpkg.com/webfont-clfn-bitmap@1.0.1/fonts.css"><link rel="stylesheet" href="https://unpkg.com/webfont-classic-console-bitmap@1.0.0/font.css"><link rel="stylesheet" href="https://unpkg.com/@hackernoon/pixel-icon-library/fonts/iconfont.css"><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw hn hn-home-solid"></i><span> 首页啊嗯</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw hn hn-newspaper-solid"></i><span> 巨魔文章</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw hn hn-user-solid"></i><span> 谁是神人</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/xiangsu_jinbi.svg" alt="Logo"><span class="site-name">神金</span></a><a class="nav-page-title" href="/"><span class="site-name">前言</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw hn hn-home-solid"></i><span> 首页啊嗯</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw hn hn-newspaper-solid"></i><span> 巨魔文章</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw hn hn-user-solid"></i><span> 谁是神人</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">前言</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-04-05T17:36:40.000Z" title="发表于 2026-04-06 01:36:40">2026-04-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-04-15T19:35:35.000Z" title="更新于 2026-04-16 03:35:35">2026-04-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:730,&quot;messagePrev&quot;:&quot;本文章离上次更新已经过&quot;,&quot;messageNext&quot;:&quot;天，内容可能已过时，请注意识别。&quot;,&quot;postUpdate&quot;:&quot;2026-04-16 03:35:35&quot;}" hidden></div><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>3月末，我去了一趟上海，参加TapTap组织的“聚光灯”24H线下Jam活动，来回花了我1千多。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413192853241.png" alt="image.png"><br>我之所以大费周章地跑到上海也算是追随自己的初心：想做游戏已经快7年了，17年开始我就有过这种摇摆的想法，到了19年做完核聚变的志愿者最终确认了下来，再到21年参加了人生第一次GameJam，路不平坦，但是走的挺有滋有味，唯一遗憾的终究不是游戏开发相关专业，7年来只想办法挤出了参与寥寥几场Jam的时间，而且有几场的结果不怎么愉快。</p>
+<p>工作后，我本以为自己会有更多时间去接触Jam，不过一年半下来糟心事不少，只是想办法做了两个可运行的原型，一个桌游规则，以及一个游戏mod——mod倒是挺受欢迎的，快1年下来累积了不少订阅量，查看&#x2F;订阅比来到了50%。不过剩下的就不咋地了。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413193923990.png" alt="image.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413194144961.png" alt="image.png"></p>
+<p>“<strong>一个人，特别想成为一个什么，但始终没有成为一个什么，那么这个什么也就成了他一辈子都魂牵梦绕的什么</strong>“ 初读莫言这段话，只是觉得他境界高，能用大白话写出这么这么有深度的文字，现在回看，却感觉像在照镜子。但是我是不会让做游戏这个“什么”只是魂牵梦绕我一辈子的，所以今年我打算把工作重心放一放，学校里的事情偶尔摆一段时间也是不成问题，工作总得来说是比读书要舒服点的，至少能随时请假。因此，在3月份的周末，我坐上了12小时的火车，又一次启航追逐梦想去。</p>
+<p>就算没这么多狗屁的过往情怀，简单算下来，包上食宿，2k块钱买个快乐的周末，外加重新点燃自己，值得，感觉生活又有了方向。</p>
+<p>电子游戏可不会自己长出来——哪怕有了AI加成也是，这次去心动公司，我用过TapTapMaker以后，惊觉我已经离AI的第一线离了很长一段距离：现在最新的AI产品竟然已经如此成熟！游戏是真做出来了，不过回去之后我有了个新目标：在这个AI的时代，对接最新的开发工具已不是为了图新鲜就赶时髦，而是实打实的开发效率提升。因此，为了能更好地为后续的Jam活动做准备，有必要为自己准备一个Godot版本的TapTapMaker——或者说，集成化AI智能体开发环境。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413203418209.png" alt="image.png"></p>
+<h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><p>架构很简单：Godot——Godot MCP插件——OpenCode——大模型（我用的GLM 5），本质是只是用MCP服务器和OpenCode搭建一个Godot与大模型之间的沟通桥梁。</p>
+<p>至于为什么不直接跳过这两者，让大模型原地生成GDScript：其实在这之前我还试过用VScode打开工程根目录后用Claude Code生成内容，它虽然能正常生成，但是没法主动打开游戏调试。</p>
+<p>我认为，原生大模型由于不会主动确认Godot的版本号的，容易在生成时弄混4.x和3.x的部分语法格式，因此需要一个MCP通过提供类似的约束，或者至少告诉它当前是什么版本；另外如果没有MCP服务器，单纯有一个Coding Agent的前端没法做到自己打开游戏测试功能这种高端操作；并且Godot MCP还提供了更为稳定的在场景中布置节点的工具，据说是比直接写文件要稳定一些，不容易出现奇奇怪怪的bug。</p>
+<h1 id="安装MCP插件"><a href="#安装MCP插件" class="headerlink" title="安装MCP插件"></a>安装MCP插件</h1><p>由于Godot是个开源引擎，截止到现在，Asset Lib里已经有至少5个MCP插件了，有些需要npm配置，有一些还是要收费的，我这里以可以解包即用的<a target="_blank" rel="noopener" href="https://godotengine.org/asset-library/asset/4767">tomyud 的 Godot AI Assistant tools MCP</a>为例，从GitHub下载源码压缩包后，直接把内部的addon文件夹整个复制黏贴到Godot工程的目录下（其实就是最常见的Godot插件安装方式）<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413202530804.png" alt="image.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260413202547899.png" alt="image.png|697"><br>打开godot上方菜单栏<code>项目——项目设置——插件</code>，勾选启用<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260415164915525.png" alt="image.png"><br>如果右上方能看到MCP:Connecting，说明插件已经安装成功了<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260415164844175.png" alt="image.png"></p>
+<h1 id="使OpenCode识别MCP"><a href="#使OpenCode识别MCP" class="headerlink" title="使OpenCode识别MCP"></a>使OpenCode识别MCP</h1><p>点开设置连接自己的提供商，要注意Zhipu 和 Zhipu Coding Plan的区别，一个是直接用钱包里的，一个才是使用订阅计划的额度。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260415163222146.png" alt="image.png"><br>API密钥倒是可以用同一个，估计是请求地址的区别<br>确认OpenCode可以接入大模型之后，再开始配置MCP</p>
+<p>OpenCode有多种方式配置MCP（见<a target="_blank" rel="noopener" href="https://opencode.ai/docs/mcp-servers">OpenCode 官方文档</a>），为了防止OpenCode会在多开时调用错误的Godot工程项目，我采取了保守方法，直接在Godot的项目根目录下创建opencode.json，让它在打开环境时识别。<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260415163824092.png" alt="image.png"><br>json代码如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;$schema&quot;</span><span class="punctuation">:</span> <span class="string">&quot;https://opencode.ai/config.json&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">&quot;mcp&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">&quot;godot&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line"></span><br><span class="line">      <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;local&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">      <span class="attr">&quot;command&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;npx.cmd&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;-y&quot;</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">        <span class="string">&quot;godot-mcp-server&quot;</span></span><br><span class="line"></span><br><span class="line">      <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line"></span><br><span class="line">      <span class="attr">&quot;enabled&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>另一种办法是直接在<code>C:\Users\LEGION\.config</code>中创建<code>opencode.json</code>以配置OpenCode，这种就是全局配置，如果有在上一步使用<a target="_blank" rel="noopener" href="https://docs.bigmodel.cn/cn/coding-plan/extension/coding-tool-helper">智谱一键安装助手</a>的话，应该能直接看到这个文件。</p>
+</blockquote>
+<p>这样就行了，我使用的是OpenCode Desktop客户端，配置完以后，只要用OpenCode重新打开应该就会识别并运行<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260416153011933.png" alt="image.png"><br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.神金.icu/20260416153025648.png" alt="image.png"></p>
+<h1 id="另"><a href="#另" class="headerlink" title="另"></a>另</h1><p>我倒是有过另一个想法：先用TapTapMaker来做个原型出来，然后基于源码让AI移植成基于Godot引擎的版本，现在TapTapMaker是允许将源代码上传到GitHub的（只要你给它提供你的仓库令牌就行），也就是意味着源代码并没有想象的那么闭锁。</p>
+<p>这招理论上可行。但是实际测试起来，在转Godot上遇到了困难：也许是我不熟悉Lua的UrhoX引擎，和上下文过长的缘故，导致有些东西不明不白的没法在Godot上实现，尝试修复也无果</p>
+<p>也许需要专门炼一个skill出来，我感觉有点像以前的编码解释器</p>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" title="关于在Claude Code里使用GLM 4.6那些事儿"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">关于在Claude Code里使用GLM 4.6那些事儿</div></div><div class="info-2"><div class="info-item-1">听说清华智谱CodeGeex最近发布了GLM 4.6，声称代码能力和Claude Sonnet能打的有来有回 我一直对国产大模型都挺支持的，尤其是那些愿意潜心研究东西，真正在搞突破的公司来说，清华智谱也是我研究生阶段一直在关注的一家公司，故兴高采烈地下载了CodeGeex...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">15x3</div><div class="author-info-description">由杏仁核漏电的类人大脑驱动</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/15x3"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="hn hn-numbered-list"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85MCP%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">安装MCP插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BFOpenCode%E8%AF%86%E5%88%ABMCP"><span class="toc-number">4.</span> <span class="toc-text">使OpenCode识别MCP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%A6"><span class="toc-number">5.</span> <span class="toc-text">另</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="hn hn-tech-stories"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/06/%E5%88%B6%E4%BD%9C%E4%B8%80%E4%B8%AA%E9%AB%98%E5%BA%A6%E9%9B%86%E6%88%90%E7%9A%84Godot%20AI%E6%99%BA%E8%83%BD%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" title="前言">前言</a><time datetime="2026-04-05T17:36:40.000Z" title="发表于 2026-04-06 01:36:40">2026-04-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/07/%E5%85%B3%E4%BA%8E%E5%9C%A8Claude%20Code%E9%87%8C%E4%BD%BF%E7%94%A8GLM%204.6%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" title="关于在Claude Code里使用GLM 4.6那些事儿">关于在Claude Code里使用GLM 4.6那些事儿</a><time datetime="2025-12-07T00:16:21.000Z" title="发表于 2025-12-07 08:16:21">2025-12-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/27/%E5%BC%80%E5%8F%91%E5%A4%8D%E7%9B%98%EF%BC%9A%E4%B8%80%E5%91%A8%E4%B8%A4%E4%B8%AAMod%EF%BC%8C%E5%93%AA%E4%BA%9B%E4%BA%8B%E6%83%85%E5%81%9A%E5%AF%B9%E4%BA%86%EF%BC%8C%E5%93%AA%E4%BA%9B%E5%81%9A%E9%94%99%E4%BA%86/" title="开发复盘：一周两个Mod，哪些事情做对了，哪些做错了">开发复盘：一周两个Mod，哪些事情做对了，哪些做错了</a><time datetime="2025-07-26T20:37:10.000Z" title="发表于 2025-07-27 04:37:10">2025-07-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/01/%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8E%20Obsidian%20+%20Hexo%20+%20Github%20%E7%9A%84%E9%9B%B6%E5%B9%B2%E6%89%B0%E5%86%99%E4%BD%9C%E7%8E%AF%E5%A2%83/" title="构建基于 Obsidian + Hexo + Github 的零干扰写作环境">构建基于 Obsidian + Hexo + Github 的零干扰写作环境</a><time datetime="2025-05-01T03:59:59.000Z" title="发表于 2025-05-01 11:59:59">2025-05-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2026 By 15x3</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5 </a><a href="https://icp.gov.moe/?keyword=20251550" target="_blank">萌ICP备20251550号</a></div><div class="footer_custom_text">Powered by Github Pages & Tencent Cloud</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="hn hn-newspaper-solid"> </i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="hn hn-moon-solid"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="hn hn-bullet-list-solid"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="hn hn-cog-solid"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="hn hn-bullet-list-solid"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="hn hn-arrow-up-solid"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/19.1.3/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="1843870503" data-server="netease" data-type="song" data-fixed="true" data-autoplay="false" data-lrctype="0"> </div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/fireworks.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.4/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
